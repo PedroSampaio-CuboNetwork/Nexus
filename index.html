@@ -9,22 +9,25 @@
 </head>
 <body>
     <header>
+        <a href="" id="logo">
+            <img src="https://cdn.cubo.network/assets/images/cubo-inverse.svg" alt="Logo_Cubo">
+        </a>
         <nav>
-            <a href="" id="logo">
-                <img src="https://cdn.cubo.network/assets/images/cubo-inverse.svg" alt="Logo_Cubo">
-            </a>
-            
             <section id="barraPesquisa">
-                <input type="text" id="barra" placeholder="Procurar empresas ou pessoas">
-                <button type="button" onclick="pesquisar()" id="pesquisa">
-                    <i class="fa fa-search"></i>
+                <input type="text" id="inputPesquisa" placeholder="Pesquisar empresas ou pessoas">
+                <button type="button" onclick="pesquisar()" id="botaoPesquisar">
+                    <a href="" id="lupa">
+                        <img id="lupa" src="./imagens/logo/lupa.png" alt="Icone Lupa">
+                    </a>
                 </button>
-                
             </section>
         </nav>
     </header>
 
+    <section id="Resultado da pesquisa">
+    </section>
 
+    
     <script src="./script.js"></script>
 </body>
 </html>
