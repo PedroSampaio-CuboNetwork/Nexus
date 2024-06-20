@@ -1,30 +1,19 @@
-const inputPesquisa = document.querySelector("#inputPesquisa");
-const lugarResultado = document.querySelector("#ResultadoDaPesquisa");
-const poke = ["Pichau", "Bulba", "Charchar", "Turgue"];
+const pergunta = document.querySelector("#inputPesquisa");
 
-function pesquisar() {
-    lugarResultado.innerHTML = '';
-    let pesquisa = inputPesquisa.value.toLowerCase(); 
-    let encontrado = false; 
-
-    for (const pokemon of poke) {
-        if (pesquisa === pokemon.toLowerCase()) {
-            let resultado = document.createElement("div");
-            resultado.innerHTML = `
-                <h2>O resultado para "${pesquisa}" é:</h2>
-                <p>${pesquisa} - Poke inicial Indigo</p>
-            `;
-            lugarResultado.appendChild(resultado);
-            encontrado = true; 
-            break; 
-        }
-    }
-
-    if (!encontrado) {
-        let resultado = document.createElement("div");
-        resultado.innerHTML = `
-            <h2>Nenhum resultado encontrado para "${pesquisa}".</h2>
-        `;
-        lugarResultado.appendChild(resultado);
-    }
+function pesquisar(){
+    let resposta = fetch('/ask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({pergunta: pergunta})
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('ResultadoDaPesquisa').innerHTML = data.resposta;
+        })
+        .catch(error => {
+            console.error('Erro ao pesquisar a resposta', error);
+        });
+    return resposta
 }
