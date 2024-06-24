@@ -1,5 +1,16 @@
 let perguntaInput = document.querySelector("#inputPesquisa");
-console.log
+let botaoPesquisar = document.querySelector("#botaoPesquisar");
+
+perguntaInput.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        pesquisar();
+    }
+});
+
+botaoPesquisar.addEventListener("click", function() {
+    pesquisar();
+});
+
 function pesquisar() {
     let pergunta = perguntaInput.value;
     fetch("http://127.0.0.1:5000/ask", {
@@ -20,7 +31,8 @@ function pesquisar() {
     .then(data => {
         if (data && data.resposta) {
             console.log(data.resposta)
-            document.getElementById("ResultadoDaPesquisa").innerHTML = data.resposta;
+            document.getElementById("ResultadoDaPesquisa").innerHTML = `<h4>A resposta para '${pergunta}' é:</h4><hr><p>${data.resposta}</p>`;
+            perguntaInput.value = '';
         }
         else {
             throw new Error("Resposta inválida do servidor");
@@ -29,4 +41,5 @@ function pesquisar() {
     .catch(error => {
         console.error("Erro ao pesquisar a resposta", error);
     });
+    document.getElementById("#inputPesquisa") = '';
 }

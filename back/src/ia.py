@@ -26,5 +26,5 @@ def cuboIa(question):
                 f"Pergunta atual: {question}")
 
     response = model.generate_content(contexto)
-    resposta = f"A resposta para '{question}' é: {response.text}"
+    resposta = response.text
     return resposta

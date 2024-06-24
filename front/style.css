@@ -63,3 +63,23 @@ nav {
 #botaoPesquisar:focus {
     background-color: rgb(18, 19, 20);
 }
+
+#ResultadoDaPesquisa {
+    width: 60%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: left;
+}
+footer {
+    background-color: rgb(18, 19, 20);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
